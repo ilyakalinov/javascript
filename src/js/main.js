@@ -1,14 +1,310 @@
+'use strict';
+// ////////////////////////////////////////////////////////////
+// 046 Контекст вызова
+// ////////////////////////////////////////////////////////////
+
+// function showThis(a, b) {
+//      console.log(this);
+//      function sum() {
+//           console.log(this);
+//           return a + b; 
+//      }
+//      console.log(sum());
+// }
+// showThis(4, 5); 
+
+/////////////////////////////////////////////////
+
+// const obj = {
+//      a: 20,
+//      b: 15,
+//      sum: function () {
+//           function shout(){
+//                console.log(this)
+//           }
+//           shout();
+//      }
+// };
+// obj.sum();
+
+//////////////////////////////////////////
+
+// function user(name, id) {
+//      this.name = name;
+//      this.id = id;
+//      this.human = true;
+//      this.hello = function() {
+//           console.log('Hello' + this.name);
+//      }
+// }
+// let ivan = new user('Ivan', 23);
+
+/////////////////////////////////////////////////
+
+// function sayName() {
+//      console.log(this);
+//      console.log(this.name);
+// }
+
+// const user = {
+//      name: 'John'
+// };
+//  sayName.call(user);
+//  sayName.apply(user);
+
+///////////////////////////////////////////
+
+// function sayName(surname) {
+//      console.log(this);
+//      console.log(this.name + surname);
+// }
+
+// const user = {
+//      name: 'John'
+// };
+//  sayName.call(user, 'Smith');
+//  sayName.apply(user, ['Smith']);
+
+//  function count(num) {
+//       return this*num;
+//  }
+
+//  const double = count.bind(2);
+//  console.log(double(3));
+//  console.log(double(5));
+
+//////////////////////////////////////////////
+
+// const btnAll = document.querySelectorAll('button');
+// const btn = document.querySelector('button');
+// btnAll.forEach(item => {
+//      item.addEventListener('click', function() {
+//           console.log(this);
+//      });
+// });
+// btn.addEventListener('click', function() {
+//      this.style.backgroundColor = 'red';
+// });
+
+//////////////////////////////////////////////////////
+
+// const obj = {
+//      num: 5,
+//      sayNamber: function() {
+//           const say = () => {                  //Работает только стрелочная функция
+//                console.log(this);
+//           };
+//           say();
+//      }
+// };
+// obj.sayNamber();
+
+///////////////////////////////////////////////////////
+
+// const double = (a) => {
+//      return a * 2;
+// };
+//или(если тлько 1 аргумент)
+const double = (a) => a * 2;
+console.log(double(4));
+////////////////////////////////////////////////////////////
+// 1) Обычная функция: this = window, но если 'use strict' будет undefined
+// 2) Контекст у методов обьекта будет сам обьект
+// 3) this в конструкторах и классах - это новый экземпляр обьекта
+// 4) Ручная привязка this: call, apply, bind
+
+// ////////////////////////////////////////////////////////////
+// 045 Функции-конструкторы
+// ////////////////////////////////////////////////////////////
+
+// function user(name, id) {
+//      this.name = name;
+//      this.id = id;
+//      this.human = true;
+//      this.hello = function() {
+//           console.log(`Hello ${this.name}`);
+//      };
+// }
+
+// user.prototype.exit = function(name) {
+//      console.log(`Пользователь ${this.name} ушел`);
+// };
+
+// const ivan = new user('Ivan', 28);
+// const alex = new user('Alex', 20);
+
+// ivan.hello();
+// alex.exit();
+
+// console.log(ivan);
+// console.log(alex);
+
+// ////////////////////////////////////////////////////////////
+// 
+// ////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////
+// FOOD
+// ////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////
+// 
+// ////////////////////////////////////////////////////////////
+
+// window.addEventListener('DOMContentLoaded', () => {
+//      const btnMenu = document.querySelectorAll('.tabheader__item'),
+//          menuContent = document.querySelectorAll('.tabcontent'),
+//          btnParent = document.querySelector('.tabheader__items');
+//  //Tabs
+//          function hideMenuContent() {
+//              menuContent.forEach(item => {
+//                  item.classList.add('hide');
+//                  item.classList.remove('show', 'fade');
+//              });
+//              btnMenu.forEach(item => {
+//                  item.classList.remove('tabheader__item_active');
+//              });
+//          }
+ 
+//          function showMenuContent(i = 0) {
+//              btnMenu[i].classList.add('tabheader__item_active');
+//              menuContent[i].classList.add('show', 'fade');
+//              menuContent[i].classList.remove('hide');
+//          };
+ 
+//          hideMenuContent();
+//          showMenuContent(0);
+ 
+//          btnParent.addEventListener('click', (event) => {
+//              const target = event.target;
+//              btnMenu.forEach((item, i) => {
+//                  if (target == item) {
+//                      hideMenuContent();
+//                      showMenuContent(i);
+//                  }
+//              });
+//          });
+ 
+//  //timer
+ 
+//      const deadline = '2021-11-18';
+ 
+//      function getTimeRemaining(endtime) {
+//          const t = Date.parse(endtime) - Date.parse(new Date()),
+//              days = Math.floor(t / (1000 * 60 * 60 * 24)),
+//              hours = Math.floor((t / (1000 * 60 * 60)) % 24),
+//              minutes = Math.floor(t / 1000 / 60 % 60),
+//              seconds = Math.floor((t / 1000) % 60);
+//          return {
+//              'total': t,
+//              'days': days,
+//              'hours': hours,
+//              'minutes': minutes,
+//              'seconds': seconds
+//          };
+//      }
+ 
+//      function getZero(num) {
+//          if (num >= 0 && num < 10) {
+//              return `0${num}`;
+//          } else {
+//              return num;
+//          }
+//      }
+ 
+//      function setClock(selector, endtime) {
+//          const timer = document.querySelector(selector),
+//              days = timer.querySelector('#days'),
+//              hours = timer.querySelector('#hours'),
+//              minutes = timer.querySelector('#minutes'),
+//              seconds = timer.querySelector('#seconds'),
+//              timeInterval = setInterval(updateClock, 1000);
+ 
+//          updateClock();
+ 
+//      function updateClock () {
+//          const t = getTimeRemaining(endtime);
+ 
+//          days.innerHTML = getZero(t.days);
+//          hours.innerHTML = getZero(t.hours);
+//          minutes.innerHTML = getZero(t.minutes);
+//          seconds.innerHTML = getZero(t.seconds);
+ 
+//          if (t.total <= 0) {
+//              clearInterval(timeInterval);
+//          }
+//          }
+//      }
+ 
+//      setClock('.timer', deadline);
+ 
+//      //Modal
+ 
+//      const modalTrigger = document.querySelectorAll('[data-modal]'),
+//          modal = document.querySelector('.modal'),
+//          modalCloseBtn = document.querySelector('[data-close]');
+     
+//          function openModal() {
+//              modal.classList.add('show');
+//              document.body.style.overflow = 'hidden';
+//              clearInterval(modalTimerId);
+//          }
+//          function closeModal() {
+//              modal.classList.remove('show');
+//              document.body.style.overflow = '';
+//          }
+ 
+//          modalTrigger.forEach(item => {
+//              item.addEventListener('click', () => {
+//                  openModal();
+//              });
+//          }); 
+ 
+//          modalCloseBtn.addEventListener('click', closeModal);
+ 
+//          modal.addEventListener('click', (e) => {
+//              if(e.target === modal) {
+//                  closeModal();
+//              }
+//          });
+ 
+//          document.addEventListener('keydown', (e) => {
+//              if(e.code === 'Escape' && modal.classList.contains('show')) {
+//                  closeModal();
+//              }
+//          });
+ 
+//          const modalTimerId = setTimeout(openModal, 3000);
+ 
+//          function showModalByScroll () {
+//              if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
+//                  openModal();
+//                  window.removeEventListener('scroll', showModalByScroll);
+//              }
+//          }
+ 
+//          window.addEventListener('scroll', showModalByScroll);
+//  });
+// ////////////////////////////////////////////////////////////
+// 
+// ////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////
+// 
+// ////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////
+// 
+// ////////////////////////////////////////////////////////////
+
+
 // ////////////////////////////////////////////////////////////
 // 040 Работа с датами
 // ////////////////////////////////////////////////////////////
-let start = new Date();
+// let start = new Date();
 
-for (let i = 0; i < 100000; i++) {
-     let some = i ** 3;
-}
-let end = new Date();
+// for (let i = 0; i < 100000; i++) {
+//      let some = i ** 3;
+// }
+// let end = new Date();
 
-alert(`Цикл отработал за ${end - start} миллисекунд`);
+// alert(`Цикл отработал за ${end - start} миллисекунд`);
 ////////////////////////////////////////////////////
 // const now = new Date('2021-11-15');
 
@@ -28,8 +324,8 @@ alert(`Цикл отработал за ${end - start} миллисекунд`);
 // ////////////////////////////////////////////////////////////
 // 037 События на мобильных устройствах
 // ////////////////////////////////////////////////////////////
-const btns = document.querySelectorAll('button'),
-     wrapper = document.querySelector('.btn__block');
+// const btns = document.querySelectorAll('button'),
+//      wrapper = document.querySelector('.btn__block');
 
 // console.log(btns[0].classList.length);
 // console.log(btns[0].classList.item(0));
@@ -41,19 +337,19 @@ const btns = document.querySelectorAll('button'),
 //      console.log('Ok');
 // }
 
-btns.forEach(item => {
-     item.addEventListener('click', () => {
-          item.classList.toggle('red');
-          if (item.classList.contains('red')) {
-               //btns[1].classList.add('red');
-               item.style.background = ('red');
-          } else {
-               //btns[1].classList.remove('red');
-               item.style.background = ('white');
+// btns.forEach(item => {
+//      item.addEventListener('click', () => {
+//           item.classList.toggle('red');
+//           if (item.classList.contains('red')) {
+//                //btns[1].classList.add('red');
+//                item.style.background = ('red');
+//           } else {
+//                //btns[1].classList.remove('red');
+//                item.style.background = ('white');
 
-          }
-     });
-});
+//           }
+//      });
+// });
 
 // btns[0].addEventListener('click', () => {
 //      btns[1].classList.toggle('red');
@@ -71,21 +367,21 @@ btns.forEach(item => {
 //           console.log('Hello');
 //      }
 // });
-wrapper.addEventListener('click', (event) => {
-     if (event.target && event.target.matches('button.red')) {
-          console.log('Hello');
-     }
-});
+// wrapper.addEventListener('click', (event) => {
+//      if (event.target && event.target.matches('button.red')) {
+//           console.log('Hello');
+//      }
+// });
 
 // btns.forEach(btn => {
 //      btn.addEventListener('click', () => {
 //           console.log('Hello');
 //      });
 // });
-const btn = document.createElement('button');
-btn.classList.add('red');
-btn.style.background = ('green');
-wrapper.append(btn);
+// const btn = document.createElement('button');
+// btn.classList.add('red');
+// btn.style.background = ('green');
+// wrapper.append(btn);
 //console.log(btns[0].className);
 // ////////////////////////////////////////////////////////////
 // 034 События на мобильных устройствах

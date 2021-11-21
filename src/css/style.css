@@ -1,0 +1,15 @@
+input{
+    height: 30px;
+}
+button {
+    width: 100px;
+    height: 100px;
+    background: class;
+}
+.calc{
+    text-align: center;
+    margin-left: 20px;
+}
+.calc h1 {
+    margin-bottom: 0px;
+}

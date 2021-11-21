@@ -1,40 +1,104 @@
 'use strict';
 // ////////////////////////////////////////////////////////////
+// 053 AJAX
+// ////////////////////////////////////////////////////////////
+
+// const inputUsd = document.querySelector('.USD'),
+//      inputByn = document.querySelector('.BYN');
+
+//      inputUsd.addEventListener('input', () => {
+// const request = new XMLHttpRequest();
+
+//      //request.open(method, url, async, login, pass);
+//      request.open('GET', 'js/current.json');
+//      request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+//      request.send();
+
+//      request.addEventListener('load', () => {
+//           if (request.status === 200) {
+//                const data = JSON.parse(request.response);
+//                     inputUsd.value = (+inputByn.value * data.current.usd).toFixed(2);
+//           } else {
+//                inputUsd.value = "Что-то пошло не так";
+//           }
+//      });
+
+//      //status
+//      //statusText
+//      //response
+//      //readyState
+
+// });
+// ////////////////////////////////////////////////////////////
+// 051 JSON
+// ////////////////////////////////////////////////////////////
+
+// const persone = {
+//      name: 'Alex',
+//      tel: '+7111111111',
+//      parents: {
+//           mom: 'Olga',
+//           dad: 'Mike'
+//      }
+// };
+// const clone = JSON.parse(JSON.stringify(persone));
+// clone.parents.mom = 'Ann';
+// console.log(persone);
+// console.log(clone);
+
+// ////////////////////////////////////////////////////////////
+// 049 Rest
+// ////////////////////////////////////////////////////////////
+
+// const log = function(a, b, ...rest) {
+//      console.log(a,b, rest);
+// }
+
+// log('basic', 'rest', 'operator', 'usage');
+
+// function calcOrDouble(number, basis = 2) {
+//      console.log(number*basis);
+// }
+// calcOrDouble(3);
+
+
+
+// ////////////////////////////////////////////////////////////
 // 047 Классы
 // ////////////////////////////////////////////////////////////
 
-class Rectangle {
-     constructor(height, width) {
-          this.height = height;
-          this.width = width;
-     }
+// class Rectangle {
+//      constructor(height, width) {
+//           this.height = height;
+//           this.width = width;
+//      }
 
-     calcArea() {
-          return this.height * this.width;
-     }
-}
+//      calcArea() {
+//           return this.height * this.width;
+//      }
+// }
 
-class ColoredRectangleWithText extends Rectangle {
-     constructor(height, width, text, bgColor) {
-          super(height, width);
-          this.text = text;
-          this.bgColor = bgColor;
-     }
+// class ColoredRectangleWithText extends Rectangle {
+//      constructor(height, width, text, bgColor) {
+//           super(height, width);
+//           this.text = text;
+//           this.bgColor = bgColor;
+//      }
 
-     showMyProps() {
-          console.log(`Текст: ${this.text}, цвет: ${this.bgColor}`);
-     }
-}
+//      showMyProps() {
+//           console.log(`Текст: ${this.text}, цвет: ${this.bgColor}`);
+//      }
+// }
 
-const div = new ColoredRectangleWithText(25, 10, 'Hello World', 'red');
-div.showMyProps();
-console.log(div.calcArea());
+// const div = new ColoredRectangleWithText(25, 10, 'Hello World', 'red');
+// div.showMyProps();
+// console.log(div.calcArea());
 
-const square = new Rectangle(10, 10);
-const long = new Rectangle(10, 20);
+// const square = new Rectangle(10, 10);
+// const long = new Rectangle(10, 20);
 
-console.log(square.calcArea());
-console.log(long.calcArea());
+// console.log(square.calcArea());
+// console.log(long.calcArea());
 
 
 // ////////////////////////////////////////////////////////////

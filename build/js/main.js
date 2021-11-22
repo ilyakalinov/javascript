@@ -1,30 +1,34 @@
 'use strict';
-const inputUsd = document.querySelector('.USD'),
-     inputByn = document.querySelector('.BYN');
+// ////////////////////////////////////////////////////////////
+// 053 AJAX
+// ////////////////////////////////////////////////////////////
 
-     inputUsd.addEventListener('input', () => {
-const request = new XMLHttpRequest();
+// const inputUsd = document.querySelector('.USD'),
+//      inputByn = document.querySelector('.BYN');
 
-     //request.open(method, url, async, login, pass);
-     request.open('GET', 'js/current.json');
-     request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-     request.send();
+//      inputUsd.addEventListener('input', () => {
+// const request = new XMLHttpRequest();
 
-     request.addEventListener('load', () => {
-          if (request.status === 200) {
-               const data = JSON.parse(request.response);
-                    inputUsd.value = (+inputByn.value * data.current.usd).toFixed(2);
-          } else {
-               inputUsd.value = "Что-то пошло не так";
-          }
-     });
+//      //request.open(method, url, async, login, pass);
+//      request.open('GET', 'js/current.json');
+//      request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+//      request.send();
 
-     //status
-     //statusText
-     //response
-     //readyState
+//      request.addEventListener('load', () => {
+//           if (request.status === 200) {
+//                const data = JSON.parse(request.response);
+//                     inputUsd.value = (+inputByn.value * data.current.usd).toFixed(2);
+//           } else {
+//                inputUsd.value = "Что-то пошло не так";
+//           }
+//      });
 
-});
+//      //status
+//      //statusText
+//      //response
+//      //readyState
+
+// });
 // ////////////////////////////////////////////////////////////
 // 051 JSON
 // ////////////////////////////////////////////////////////////

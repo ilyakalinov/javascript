@@ -1,4 +1,187 @@
 'use strict';
+
+// ////////////////////////////////////////////////////////////
+// 055 Promise
+// ////////////////////////////////////////////////////////////
+
+const test = time => {
+     return new Promise((resolve, reject) => {
+          setTimeout(() => resolve(), time);
+     });
+};
+
+// test(1000).then(() => console.log('1000 ms'));
+// test(2000).then(() => console.log('2000 ms'));
+
+Promise.all([test(1000), test(2000)]).then(() => {
+     console.log('All');
+});
+//////////////////////////////////////////////
+// console.log('Запрос данных...');
+
+// const req = new Promise(function(resolve, reject) {
+//      setTimeout(() => {
+//           console.log('Подготовка данных...');
+
+//           const product = {
+//                name: 'TV',
+//                price: 2000
+//           };
+
+//           resolve(product);
+//      }, 2000);
+// });
+
+// req.then((product) => {
+//      return new Promise((resolve, reject) => {
+//           setTimeout(() => {
+//                product.status = 'order';
+//                resolve(product);
+//           }, 2000);
+//      });
+
+// }).then(data => {
+//      data.modify = true;
+//      return data;
+// }).then((data) => {
+//      console.log(data);     
+// }).catch(() => {                          //При ошибке перемещение сразу в блок .catch
+//     console.error('Произошла ошибка');  
+// }).finally(() => {                          //всегда записывать                          
+//      console.log('Finally');
+// });
+
+////////////////////
+//При ошибке
+//////////////////
+// console.log('Запрос данных...');
+
+// const req = new Promise(function(resolve, reject) {
+//      setTimeout(() => {
+//           console.log('Подготовка данных...');
+
+//           const product = {
+//                name: 'TV',
+//                price: 2000
+//           };
+
+//           resolve(product);
+//      }, 2000);
+// });
+
+// req.then((product) => {
+//      return new Promise((resolve, reject) => {
+//           setTimeout(() => {
+//                product.status = 'order';
+//                reject();                                  //вфзов при ошибке
+//           }, 2000);
+//      });
+
+// }).then(data => {
+//      data.modify = true;
+//      return data;
+// }).then((data) => {
+//      console.log(data);     
+// }).catch(() => {                          //При ошибке перемещение сразу в блок .catch
+//     console.error('Произошла ошибка');  
+// }).finally(() => {
+//      console.log('Finally');
+// });
+////////////////////
+//
+//////////////////
+// req.then((product) => {
+//      setTimeout(() => {
+//      product.status = 'order';
+//      console.log(product);
+// }, 2000);
+// });
+
+
+     
+// ////////////////////////////////////////////////////////////
+// 054 AJAX// //Forms
+// ////////////////////////////////////////////////////////////
+
+// const forms = document.querySelectorAll('form');
+
+// const message = {
+//     load: 'img/form/spinner.svg',
+//     success: 'Спасибо! Скоро мы вам перезвоним',
+//     failure: 'Что-то пошло не так'
+// };
+
+// forms.forEach(item => {
+//     postData(item);
+// });
+
+// function postData(forms) {
+//     forms.addEventListener('submit', (e) => {
+//         e.preventDefault();
+
+//         const statusMessage = document.createElement('img');
+//         statusMessage.src = message.load;
+//         statusMessage.style.cssText = `
+//             display: block;
+//             margin: 0 auto;
+//         `;
+//         statusMessage.textContent = message.load;
+//         //forms.append(statusMessage);
+//         forms.insertAdjacentElement('afterend', statusMessage);
+
+//         const request = new XMLHttpRequest();
+//         request.open('POST', 'server.php');
+
+//         request.setRequestHeader('Content-type', 'application/json');
+//         const formData = new FormData(forms);
+
+//         const object = {};
+//         formData.forEach(function(value, key) {
+//             object[key] = value;
+//         });
+
+//         const toJson = JSON.stringify(object);
+//         request.send(toJson);
+
+//         request.addEventListener('load', () => {
+//             if (request.status === 200) {
+//                 console.log(request.response);
+//                     showThanksModal(message.success);
+//                     statusMessage.classList.remove('show', 'fade');
+//                     statusMessage.classList.add('hide');
+//             } else {
+//                 showThanksModal(message.failure);
+//             }
+//         });
+
+//         function showThanksModal(message) {
+//             const prevModalDialog = document.querySelector('.modal__dialog');
+//             prevModalDialog.classList.add('hide');
+//             openModal();
+
+//             const thanksModal = document.createElement('div');
+//             thanksModal.classList.add('modal__dialog');
+//             thanksModal.innerHTML = `
+//             <div class="modal__content">
+//                 <div class="modal__close" data-close>×</div>
+//                 <div class="modal__title">${message}</div>
+//             </div>
+//             `;
+
+//             const thanksModalBlock = document.querySelector('.modal');
+//             thanksModalBlock.append(thanksModal);
+//             setTimeout(() => {
+//                 thanksModal.remove();
+//                 prevModalDialog.classList.add('show');
+//                 prevModalDialog.classList.remove('hide');
+//                 closeModal();
+//                 statusMessage.style.cssText = ``;
+//             }, 4000);
+
+//         }
+//     });
+// }
+
 // ////////////////////////////////////////////////////////////
 // 053 AJAX
 // ////////////////////////////////////////////////////////////

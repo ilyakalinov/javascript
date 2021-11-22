@@ -1,21 +1,30 @@
 'use strict';
+// ////////////////////////////////////////////////////////////
+// 056 Fetch API
+// ////////////////////////////////////////////////////////////
+
+
 
 // ////////////////////////////////////////////////////////////
 // 055 Promise
 // ////////////////////////////////////////////////////////////
 
-const test = time => {
-     return new Promise((resolve, reject) => {
-          setTimeout(() => resolve(), time);
-     });
-};
+// const test = time => {
+//      return new Promise((resolve, reject) => {
+//           setTimeout(() => resolve(), time);
+//      });
+// };
 
 // test(1000).then(() => console.log('1000 ms'));
 // test(2000).then(() => console.log('2000 ms'));
 
-Promise.all([test(1000), test(2000)]).then(() => {
-     console.log('All');
-});
+// Promise.all([test(1000), test(2000)]).then(() => {               //Ждет выполнение всех
+//      console.log('All');
+// });
+
+// Promise.race([test(1000), test(2000)]).then(() => {                //Срабатывает вместе с первым
+//      console.log('All');
+// });
 //////////////////////////////////////////////
 // console.log('Запрос данных...');
 

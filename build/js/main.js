@@ -1,4 +1,462 @@
-'use strict';
+////////////////////////////////////////////////////////////
+// 065 Регулярные выражения
+// ////////////////////////////////////////////////////////////
+
+// new RegExp('pattern', 'flags');
+// /pattern/f
+
+// const ans = prompt('Введите ваше имя');
+
+//  const reg = /n/ig;
+// i      //--С этим флагом поиск не зависит от регистра: нет разницы между A и a
+// g      //--С этим флагом поиск ищет все совпадения, без него – только первое.
+// m      //--Многострочный режим (https://learn.javascript.ru/regexp-multiline-mode)  
+
+// console.log(ans.search(reg));
+//console.log(ans.match(reg));
+
+//test -- проверяет на соответствие
+//console.log(reg.test(ans));
+
+
+// Классы
+
+// const asw = prompt('Введите ваше число');
+
+// const reqs = /\d/g   ;
+// console.log(asw.match(reqs));
+
+// \D - не цифры
+// \W - не буквы
+// \d - цифры
+// \w -  Символ «слова», а точнее – буква латинского алфавита или цифра или подчёркивание _
+// \s - Пробельные символы
+
+const str = 'My name is R2D2';
+
+console.log(str.match(/\w\d\w\d/i));
+//////////////////////////////////
+//replace - заменяет
+// const pass = prompt('Password');
+// console.log(pass.replace(/./g, '*'));
+// console.log(pass.replace(/\./g, '*')); //  \ - обратный слешь экранирует
+
+console.log('12-34-56'.replace(/-/g, ':'));
+////////////////////////////////////////////////////////////
+// 064 LocalStorage
+// ////////////////////////////////////////////////////////////
+
+// const checkbox = document.querySelector('#checkbox'),
+//      form = document.querySelector('form'),
+//      change = document.querySelector('#color');
+
+// if(localStorage.getItem('isChecked')) {
+//      checkbox.checked = true; 
+// }
+
+// if (localStorage.getItem('bg') === 'changed' ){
+//      form.style.backgroundColor = 'red';
+// }
+
+// checkbox.addEventListener('change', () => {
+//      if(localStorage.getItem('isChecked')) {
+//           localStorage.removeItem('isChecked');
+//      } else {
+//           localStorage.setItem('isChecked', true);
+//      }
+// });
+
+// change.addEventListener('click', () => {
+//      if (localStorage.getItem('bg') === 'changed' ){
+//           localStorage.removeItem('bg');
+//           form.style.backgroundColor = 'white';
+//      } else {
+//           localStorage.setItem('bg', 'changed');
+//           form.style.backgroundColor = 'red';
+//      }
+// });
+
+// const persone = {
+//      name: 'Alex',
+//      age: 25
+// };
+// const serializedPerson = JSON.stringify(persone);
+
+// localStorage.setItem('alex', serializedPerson);
+
+// console.log(JSON.stringify(localStorage.getItem('alex')));
+
+// localStorage.setItem('number', '5');  //отправка 
+
+//localStorage.removeItem('number'); // удалить объект
+
+// localStorage.clear();   //очистка всего хранилища
+
+// console.log(localStorage.getItem('number'));      // localStorage.getItem('number') --- получение
+
+
+
+// ////////////////////////////////////////////////////////////
+// This / Prototype
+// ////////////////////////////////////////////////////////////
+
+// function hello() {
+//      console.log('Hello', this);
+// }
+// function sayName() {
+//      console.log(`Name is ${this.name}`);
+// }
+
+// const person = {
+//      name: 'Alex',
+//      age: 25,
+//      sayHello: hello,
+//      sayHelloWindow: hello.bind(window),
+//      logInfo: function() {
+//           console.log(`Name is ${this.name}`);
+//      },
+//      sayName: sayName
+// };
+
+// const personTwo = {
+//      name: 'Olga',
+//      age: 25,
+//      sayHello: hello,
+//      sayHelloWindow: hello.bind(window),
+//      logInfo: function(job, phone) {
+//           console.group(`${this.name} info`);
+//           console.log(`Name is ${this.name}`);
+//           console.log(`Age is ${this.age}`);
+//           console.log(`Job is ${job}`);
+//           console.log(`Phone is ${phone}`);
+//           console.groupEnd();
+//      },
+//      sayName: sayName
+// };
+// person.sayName();
+// personTwo.sayName();
+// personTwo.logInfo('teacher', '+75545584');
+
+// const elena = {
+//      name: 'Elena',
+//      age: 23
+// };
+
+// //person.logInfo.bind(elena)();
+// // const functionElena = personTwo.logInfo.bind(elena, 'frontend', '+75549578')();
+// // personTwo.logInfo.call(elena, 'frontend', '+75549578');
+// // personTwo.logInfo.apply(elena, ['frontend', '+75549578']);
+
+// // const arr = [1, 2, 3, 4, 5];
+
+// // function myltBy(arr, num) {
+// //      return arr.map(function(i) {
+// //           return i * num;
+// //      });
+// // }
+// // console.log(myltBy(arr, 15));
+
+// Array.prototype.myltBy = function(num) {
+//      return this.map(function(i) {
+//      return i * num;
+//      });
+// };
+// console.log(arr.myltBy(20));
+// ////////////////////////////////////////////////////////////
+// Prototype
+// ////////////////////////////////////////////////////////////
+
+// const person = new Object({
+//      name: 'Max',
+//      age: 25,
+//      greet: function() {
+//           console.log('Greet!');
+//      }
+// });
+// Object.prototype.sayHello = function() {
+//      console.log(`Hello ${this.name}`);
+// };
+
+// const elena = Object.create(person);
+// elena.name = 'Elena';
+
+// const str = new String('I am string');
+// ////////////////////////////////////////////////////////////
+// 059 Async Await
+// ////////////////////////////////////////////////////////////
+
+// ////////////////////////////////////////////////////////////
+// 057 методы перебора массивов
+// ////////////////////////////////////////////////////////////
+
+// // filter возвращает только те обьектыб которые подхолдят под условие
+
+// const names = ['Anna', 'Alexandr', 'Oleg', 'Lera', 'Nicolai'];
+
+// const shortNames = names.filter(function(name) {
+//      return name.length < 5;
+// });
+
+// console.log(shortNames);
+
+
+
+// // map позволет взять исходник изменить любой\каждый обьект внутри
+
+// const answer = ['AleX', 'OlEg,', 'AnnA'];
+
+// const rigtSizeName = answer.map((item) => {
+//      return item.toLowerCase();
+// });
+// console.log(rigtSizeName);
+
+
+// // every/some  
+//      //some(если хотя бы 1 элемент соответствует условию возвращает true, если не один - false)
+//      //every(возвращает true если все элементы соответствуют условию, если хотя бы 1 элемент не соответствует - false)
+
+// const some = [4, 'asdsad', 'awadaad'];
+// const someResult = some.some(item => {
+//     return typeof(item) === 'number';
+// });
+// console.log(someResult);
+
+// const every = [4, 5, 5];
+// const everyResult = every.every(item => {
+//     return typeof(item) === 'number';
+// });
+// console.log(everyResult);
+
+// // reduce
+
+// const arr = [4, 5, 1, 3, 2, 6];
+//                     /*0   4
+//                       4   5
+//                       9   1
+//                       10  3
+//                       13  2
+//                       15  6
+//                       21  */ 
+// const arrResult = arr.reduce((sum, current) => {
+//      return sum + current;
+// });
+// console.log(arrResult);
+
+// const arrFruit = ['apple', 'pear', 'plum', 'apple', 'pear', 'plum'];
+                   
+// const arrFruitResult = arrFruit.reduce((sum, current) => `${sum}, ${current} `
+// );
+// console.log(arrFruitResult);
+// ///////////////////////////////
+
+// const obj = {
+//      ivan: 'persone',
+//      ann: 'persone',
+//      dog: 'animal',
+//      cat: 'animal'
+// };
+
+// const newArr = Object.entries(obj)
+// .filter(item => {
+//     return item[1] === 'persone';
+// })
+// .map(item => item[0]);
+
+// console.log(newArr);
+// ////////////////////////////////////////////////////////////
+// 056 Fetch API
+// ////////////////////////////////////////////////////////////
+
+
+
+// ////////////////////////////////////////////////////////////
+// 055 Promise
+// ////////////////////////////////////////////////////////////
+
+
+
+// const test = time => {
+//      return new Promise((resolve, reject) => {
+//           setTimeout(() => resolve(), time);
+//      });
+// };
+
+// test(1000).then(() => console.log('1000 ms'));
+// test(2000).then(() => console.log('2000 ms'));
+
+// Promise.all([test(1000), test(2000)]).then(() => {               //Ждет выполнение всех
+//      console.log('All');
+// });
+
+// Promise.race([test(1000), test(2000)]).then(() => {                //Срабатывает вместе с первым
+//      console.log('All');
+// });
+//////////////////////////////////////////////
+// console.log('Запрос данных...');
+
+// const req = new Promise(function(resolve, reject) {
+//      setTimeout(() => {
+//           console.log('Подготовка данных...');
+
+//           const product = {
+//                name: 'TV',
+//                price: 2000
+//           };
+
+//           resolve(product);
+//      }, 2000);
+// });
+
+// req.then((product) => {
+//      return new Promise((resolve, reject) => {
+//           setTimeout(() => {
+//                product.status = 'order';
+//                resolve(product);
+//           }, 2000);
+//      });
+
+// }).then(data => {
+//      data.modify = true;
+//      return data;
+// }).then((data) => {
+//      console.log(data);     
+// }).catch(() => {                          //При ошибке перемещение сразу в блок .catch
+//     console.error('Произошла ошибка');  
+// }).finally(() => {                          //всегда записывать                          
+//      console.log('Finally');
+// });
+
+////////////////////
+//При ошибке
+//////////////////
+// console.log('Запрос данных...');
+
+// const req = new Promise(function(resolve, reject) {
+//      setTimeout(() => {
+//           console.log('Подготовка данных...');
+
+//           const product = {
+//                name: 'TV',
+//                price: 2000
+//           };
+
+//           resolve(product);
+//      }, 2000);
+// });
+
+// req.then((product) => {
+//      return new Promise((resolve, reject) => {
+//           setTimeout(() => {
+//                product.status = 'order';
+//                reject();                                  //вфзов при ошибке
+//           }, 2000);
+//      });
+
+// }).then(data => {
+//      data.modify = true;
+//      return data;
+// }).then((data) => {
+//      console.log(data);     
+// }).catch(() => {                          //При ошибке перемещение сразу в блок .catch
+//     console.error('Произошла ошибка');  
+// }).finally(() => {
+//      console.log('Finally');
+// });
+////////////////////
+//
+//////////////////
+// req.then((product) => {
+//      setTimeout(() => {
+//      product.status = 'order';
+//      console.log(product);
+// }, 2000);
+// });
+
+
+     
+// ////////////////////////////////////////////////////////////
+// 054 AJAX// //Forms
+// ////////////////////////////////////////////////////////////
+
+// const forms = document.querySelectorAll('form');
+
+// const message = {
+//     load: 'img/form/spinner.svg',
+//     success: 'Спасибо! Скоро мы вам перезвоним',
+//     failure: 'Что-то пошло не так'
+// };
+
+// forms.forEach(item => {
+//     postData(item);
+// });
+
+// function postData(forms) {
+//     forms.addEventListener('submit', (e) => {
+//         e.preventDefault();
+
+//         const statusMessage = document.createElement('img');
+//         statusMessage.src = message.load;
+//         statusMessage.style.cssText = `
+//             display: block;
+//             margin: 0 auto;
+//         `;
+//         statusMessage.textContent = message.load;
+//         //forms.append(statusMessage);
+//         forms.insertAdjacentElement('afterend', statusMessage);
+
+//         const request = new XMLHttpRequest();
+//         request.open('POST', 'server.php');
+
+//         request.setRequestHeader('Content-type', 'application/json');
+//         const formData = new FormData(forms);
+
+//         const object = {};
+//         formData.forEach(function(value, key) {
+//             object[key] = value;
+//         });
+
+//         const toJson = JSON.stringify(object);
+//         request.send(toJson);
+
+//         request.addEventListener('load', () => {
+//             if (request.status === 200) {
+//                 console.log(request.response);
+//                     showThanksModal(message.success);
+//                     statusMessage.classList.remove('show', 'fade');
+//                     statusMessage.classList.add('hide');
+//             } else {
+//                 showThanksModal(message.failure);
+//             }
+//         });
+
+//         function showThanksModal(message) {
+//             const prevModalDialog = document.querySelector('.modal__dialog');
+//             prevModalDialog.classList.add('hide');
+//             openModal();
+
+//             const thanksModal = document.createElement('div');
+//             thanksModal.classList.add('modal__dialog');
+//             thanksModal.innerHTML = `
+//             <div class="modal__content">
+//                 <div class="modal__close" data-close>×</div>
+//                 <div class="modal__title">${message}</div>
+//             </div>
+//             `;
+
+//             const thanksModalBlock = document.querySelector('.modal');
+//             thanksModalBlock.append(thanksModal);
+//             setTimeout(() => {
+//                 thanksModal.remove();
+//                 prevModalDialog.classList.add('show');
+//                 prevModalDialog.classList.remove('hide');
+//                 closeModal();
+//                 statusMessage.style.cssText = ``;
+//             }, 4000);
+
+//         }
+//     });
+// }
+
 // ////////////////////////////////////////////////////////////
 // 053 AJAX
 // ////////////////////////////////////////////////////////////

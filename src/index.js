@@ -1,3 +1,127 @@
+const myModul = require('./js/main');
+const myModulInstanse = new myModul();
+
+myModulInstanse.hello();
+myModulInstanse.goodbye();
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+// 071 WebPack
+// ////////////////////////////////////////////////////////////
+// console.log('Ok');
+// function myModul() {
+//      this.hello = function() {
+//           console.log('Hello');
+//      };
+//      this.goodbye = function() {
+//           console.log('Bye!');
+//      };
+// }
+// module.exports = myModul;
+////////////////////////////////////////////////////////////
+// 070 Модули
+// ////////////////////////////////////////////////////////////
+// const number = 1;
+
+// (function (){
+//      let number = 2;
+//      console.log(number);
+//      console.log(number + 3);
+// }());
+// console.log(number);
+
+// const user = (function() {
+//      const privat = function() {
+//           console.log('Privat');
+//      };
+
+//      return {
+//           sayHello: privat
+//      };
+// }());
+// user.sayHello();
+////////////////////////////////////////////////////////////
+// 069 Инкапсуляция
+// ////////////////////////////////////////////////////////////
+// class User{
+//      constructor(name, age) {
+//           this.name = name;
+//           this._age = age;
+//      }
+//      #surname = 'Petrov';
+
+//      say = () => {
+//           console.log(`Имя пользователя: ${this.name}${this.#surname}, возраст ${this._age}`);
+//      }
+
+//      get age() {
+//           return this._age;
+//      }
+
+//      set age(age) {
+//           if(typeof age === 'number' && age > 0 && age < 110){
+//                this._age = age;  
+//           } else {
+//                console.log('Недопустимое значение');
+//           }
+//      }
+// }
+
+// const ivan = new User('Ivan', 25);
+// ivan.say();
+///////////////////////////////////////////////////
+// function User(name, age) {
+//      this.name = name;
+//      let userAge = age;
+
+//      this.say = function() {
+//           console.log(`Имя пользователя: ${this.name}, возраст ${userAge}`);
+//      };
+
+//      this.getAge = function() {
+//           return userAge;
+//      };
+
+//      this.setAge = function(age) {
+//           // userAge = age;
+//           if(typeof age === 'number' && age > 0 && age < 110){
+//                userAge = age;  
+//           } else {
+//                console.log('Недопустимое значение');
+//           }
+//      };
+// }
+
+// const ivan = new User('Ivan', 25);
+// console.log(ivan.name);
+// console.log(ivan.getAge());
+
+// ivan.setAge(30);
+// ivan.setAge(300);
+// console.log(ivan.getAge());
+
+// ivan.say();
+////////////////////////////////////////////////////////////
+// 068 Геттеры Сеттеры
+// ////////////////////////////////////////////////////////////
+// const persone = {
+//      name: "Alex",
+//      age: 25,
+
+//      get userAge() {
+//           return this.age;
+//      },
+
+//      set userAge(num) {
+//           this.age = num;
+//      }
+// };
+// console.log(persone.userAge = 30);
+// console.log(persone.userAge);
 ////////////////////////////////////////////////////////////
 // 065 Регулярные выражения
 // ////////////////////////////////////////////////////////////
@@ -32,16 +156,16 @@
 // \w -  Символ «слова», а точнее – буква латинского алфавита или цифра или подчёркивание _
 // \s - Пробельные символы
 
-const str = 'My name is R2D2';
+// const str = 'My name is R2D2';
 
-console.log(str.match(/\w\d\w\d/i));
+// console.log(str.match(/\w\d\w\d/i));
 //////////////////////////////////
 //replace - заменяет
 // const pass = prompt('Password');
 // console.log(pass.replace(/./g, '*'));
 // console.log(pass.replace(/\./g, '*')); //  \ - обратный слешь экранирует
 
-console.log('12-34-56'.replace(/-/g, ':'));
+// console.log('12-34-56'.replace(/-/g, ':'));
 ////////////////////////////////////////////////////////////
 // 064 LocalStorage
 // ////////////////////////////////////////////////////////////
@@ -88,7 +212,7 @@ console.log('12-34-56'.replace(/-/g, ':'));
 
 // localStorage.setItem('number', '5');  //отправка 
 
-//localStorage.removeItem('number'); // удалить объект
+// localStorage.removeItem('number'); // удалить объект
 
 // localStorage.clear();   //очистка всего хранилища
 

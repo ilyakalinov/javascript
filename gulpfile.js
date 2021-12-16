@@ -11,7 +11,7 @@ const webpackConfig = require('./webpack.config.js');
 let cssFiles = [
 		'./node_modules/normalize.css/normalize.css',
 		'./src/css/style.css',
-		'./src/css/media.css',
+		//'./src/css/media.css',
 ];
 
 function clear(){

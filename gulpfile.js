@@ -5,6 +5,8 @@ var browserSync = require('browser-sync').create();
 var concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
 var sourcemaps = require('gulp-sourcemaps');
+const webpack = require('webpack-stream');
+const webpackConfig = require('./webpack.config.js');
 
 let cssFiles = [
 		'./node_modules/normalize.css/normalize.css',
@@ -48,7 +50,6 @@ function html() {
 function js(){
 	return gulp.src('./src/index.js')
 			//.pipe(gulp.dest('./build/js'))
-			//.pipe(gulp.dest('../OpenServer/domains/JS/js'))
 			.pipe(browserSync.stream());
 };
 function jsAll(){
@@ -63,6 +64,12 @@ function json(){
 			.pipe(gulp.dest('../OpenServer/domains/JS/js'))
 			.pipe(browserSync.stream());
 };
+function script() {
+	return gulp.src('./src/index.js')
+		.pipe(webpack(webpackConfig))
+		.pipe(gulp.dest('./build/js'))
+		.pipe(browserSync.stream());
+}
 function watch(){
 	gulp.watch('./src/css/**/*.css', styles)
 	gulp.watch('./src/index.html', html)
@@ -79,5 +86,7 @@ function watch(){
 let build = gulp.series(clear,
 	gulp.parallel(styles, img, html, js, jsAll, json));
 
-gulp.task ('build', build);
-gulp.task('watch', gulp.series(build, watch));
+gulp.task('build', build);
+gulp.task('prod', gulp.series(build, script));
+gulp.task('watch', gulp.series(build,
+	gulp.parallel(script, watch)));

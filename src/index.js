@@ -1,11 +1,10 @@
-const myModul = require('./js/main');
-const myModulInstanse = new myModul();
+import $ from "jquery";
+import show from './js/main';
+show();
 
-myModulInstanse.hello();
-myModulInstanse.goodbye();
+const btn = $('btn');
 
-
-
+console.log(btn);
 
 
 
